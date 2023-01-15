@@ -1,19 +1,37 @@
 {
-    "name": "wanderers-guide-character-importer",
-    "title": "Wanderer's Guide Character Importer",
-    "description": "Allows you to import characters exported from https://wanderersguide.app into your games",
-    "author": "Renn - Ben#6969",
-    "minimumCoreVersion": "0.8.8",
-    "compatibleCoreVersion": "0.8.9",
-    "system": [
-        "pf2e"
-    ],
-    "scripts": [
-        "build/module.js"
-    ],
-    "version": "0.1.0",
-    "url": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import",
-    "manifest": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import/releases/latest/download/module.json",
-    "download": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import/releases/download/0.1.0/module.zip",
-    "license": "./LICENSE"
+  "id": "pf2e-wanderers-guide-character-importer",
+  "name": "wanderers-guide-character-importer",
+  "title": "Wanderer's Guide Character Importer",
+  "description": "Allows you to import characters exported from https://wanderersguide.app into your games",
+  "authors": [
+    {
+      "id": "Renn - Ben#6969",
+      "email": "b.little1996@gmail.com",
+      "url": "https://github.com/bLittle1996"
+    }
+  ],
+  "compatibility": {
+    "minimum": "10",
+    "verified": "10.291",
+    "maximum": "10"
+  },
+  "relationships": {
+    "systems": [
+      {
+        "id": "pf2e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "4.6.0",
+          "verified": "4.6.6"
+        }
+      }
+    ]
+  },
+  "system": ["pf2e"],
+  "scripts": ["build/module.js"],
+  "version": "0.1.0",
+  "url": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import",
+  "manifest": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import/releases/latest/download/module.json",
+  "download": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import/releases/download/0.1.0/module.zip",
+  "license": "./LICENSE"
 }
