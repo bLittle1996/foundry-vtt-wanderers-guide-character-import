@@ -6,7 +6,7 @@ import {
 } from "../../../../testUtils";
 import { V3Guidechar } from "../../../schemas/v3";
 import { DeepPartial } from "../../../utils";
-import { ParsingError } from "../errors";
+import { ParsingError, UnsupportedVersionError } from "../errors";
 
 describe(parseGuidechar, () => {
   const validGuidecharCases: [GuidecharFileName, DeepPartial<V3Guidechar>][] = [
@@ -35,6 +35,9 @@ describe(parseGuidechar, () => {
     it("throws a ParsingError if something goes wrong during parsing", () => {
       expect(() => parseGuidechar("")).toThrowError(ParsingError);
       expect(() => parseGuidechar("{}")).toThrowError(ParsingError);
+      expect(() => parseGuidechar('{ "version": 3 }')).toThrowError(
+        ParsingError
+      );
       expect(() => parseGuidechar("[]")).toThrowError(ParsingError);
       expect(() => parseGuidechar("null")).toThrowError(ParsingError);
       expect(() => parseGuidechar('{ "someRandomJson": 123 }')).toThrowError(

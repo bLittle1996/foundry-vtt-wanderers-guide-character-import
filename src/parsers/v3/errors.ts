@@ -16,5 +16,3 @@ export class ParsingError extends Error {
     return this;
   }
 }
-
-export class UnsupportedVersionError extends ParsingError {}

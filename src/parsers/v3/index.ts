@@ -1,5 +1,6 @@
+import { ZodError } from "zod";
 import { V3Guidechar, V3GuidecharSchema } from "../../schemas/v3";
-import { ParsingError } from "./errors";
+import { ParsingError, UnsupportedVersionError } from "./errors";
 
 export const parseGuidechar = (guidecharJson: string): V3Guidechar => {
   try {
