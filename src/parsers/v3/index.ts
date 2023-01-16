@@ -6,15 +6,14 @@ export const parseGuidechar = (guidecharJson: string): V3Guidechar => {
   try {
     return V3GuidecharSchema.parse(JSON.parse(guidecharJson));
   } catch (error) {
-    if (error instanceof Error) {
-      throwParsingError(error);
-    }
+    const cause =
+      error instanceof Error ? error : new Error("Unable to parse .guidechar");
 
-    throw new ParsingError("Unable to parse .guidechar");
+    throwParsingError(cause);
   }
 };
 
-function throwParsingError(error: Error) {
+function throwParsingError(error: Error): never {
   const parsingError = new ParsingError(error.message);
   parsingError.setSourceError(error);
 
