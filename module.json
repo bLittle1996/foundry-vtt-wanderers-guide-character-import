@@ -1,6 +1,5 @@
 {
-  "id": "pf2e-wanderers-guide-character-importer",
-  "name": "wanderers-guide-character-importer",
+  "id": "foundry-vtt-wanderers-guide-character-import",
   "title": "Wanderer's Guide Character Importer",
   "description": "Allows you to import characters exported from https://wanderersguide.app into your games",
   "authors": [
@@ -29,6 +28,13 @@
   },
   "system": ["pf2e"],
   "scripts": ["build/module.js"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
   "version": "0.1.0",
   "url": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import",
   "manifest": "https://github.com/bLittle1996/foundry-vtt-wanderers-guide-character-import/releases/latest/download/module.json",

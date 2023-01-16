@@ -28,6 +28,7 @@
     "dev": "webpack --mode=development --watch"
   },
   "dependencies": {
-    "ramda": "^0.27.1"
+    "ramda": "^0.27.1",
+    "zod": "^3.20.2"
   }
 }

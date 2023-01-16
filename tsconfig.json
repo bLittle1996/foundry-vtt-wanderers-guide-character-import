@@ -57,7 +57,6 @@
     ] /* List of folders to include type definitions from. */,
     "types": [
       "@league-of-foundry-developers/foundry-vtt-types",
-      "./src/types",
       "jest",
       "jquery"
     ] /* Type declaration files to be included in compilation. */,
