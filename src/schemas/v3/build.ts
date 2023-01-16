@@ -17,7 +17,7 @@ const AbilityTLAUnion = z.union([
 
 const BoostSchema = z
   .object({
-    Ability: AbilityTLAUnion,
+    Ability: AbilityTLAUnion.or(z.literal("ALL")), // Not sure what ALL is used for, but it is present in __mocks__/Haruya_Harutest.guidechar
     Bonus: z.string(),
     // Formatted as ${Ability}:::${Bonus} (i.e. STR:::Boost)
     value: z.string(),
@@ -36,21 +36,21 @@ const FeatSchema = z
       code: z.unknown(),
       contentSrc: z.string(),
       cost: z.unknown(),
-      description: z.string(),
+      description: z.string().nullish(),
       frequency: z.unknown(),
       genTypeName: z.unknown(),
-      genericType: z.unknown(), // Field is unreliable, so we'll just say it's there and leave it at that z.literal("SKILL-FEAT").or(z.literal("GENERAL-FEAT")).or(z.literal("ANCESTRY-FEAT")).nullable()
-      homebrewID: z.any(),
+      genericType: z.string().nullish(), // Field is unreliable, so we'll just say it's there and leave it at that z.literal("SKILL-FEAT").or(z.literal("GENERAL-FEAT")).or(z.literal("ANCESTRY-FEAT")).nullable()
+      homebrewID: z.unknown(),
       isArchived: NumberBoolean,
       isCore: NumberBoolean,
       isDefault: NumberBoolean,
       level: z.number().int(),
       minProf: z.unknown(),
       prerequisites: z.string().nullish(),
-      skillID: z.number().int(),
+      skillID: z.number().int().nullish(),
       special: z.string().nullish(),
       trigger: z.string().nullish(),
-      version: z.string(),
+      version: z.string().nullish(),
     }),
   })
   .merge(SourceSchema);

@@ -20,7 +20,7 @@ export const CharacterSchema = z.object({
   ancestryID: z.number().int(),
   backgroundID: z.number().int(),
   buildID: z.number().nullish(),
-  classId: z.number().int(),
+  classID: z.number().int(),
   classID_2: z.number().int().nullish(), // presumable for dual class rule
   level: z.number().int(),
   name: z.string(),

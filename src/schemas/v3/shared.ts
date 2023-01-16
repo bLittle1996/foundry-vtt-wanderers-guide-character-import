@@ -1,11 +1,10 @@
 import { z } from "zod";
 
 export const SourceSchema = z.object({
-  charId: z.number().int(),
   source: z.string(),
   sourceCode: z.string(),
   sourceCodeSNum: z.string(),
-  sourceLevel: z.number().int().positive(),
+  sourceLevel: z.number().int(),
   sourceType: z.string(),
 });
 

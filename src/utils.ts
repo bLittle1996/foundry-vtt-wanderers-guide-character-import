@@ -30,3 +30,7 @@ export function logWarning(...things: unknown[]) {
 export function logError(...things: unknown[]) {
   log("error", ...things);
 }
+
+export type DeepPartial<T extends {}> = {
+  [Key in keyof T]?: T[Key] extends {} ? DeepPartial<T[Key]> : T[Key];
+};
