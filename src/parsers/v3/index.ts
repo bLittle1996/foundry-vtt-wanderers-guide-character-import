@@ -1,6 +1,5 @@
-import { ZodError } from "zod";
 import { V3Guidechar, V3GuidecharSchema } from "../../schemas/v3";
-import { ParsingError, UnsupportedVersionError } from "./errors";
+import { throwParsingError } from "./errors";
 
 export const parseGuidechar = (guidecharJson: string): V3Guidechar => {
   try {
@@ -12,10 +11,3 @@ export const parseGuidechar = (guidecharJson: string): V3Guidechar => {
     throwParsingError(cause);
   }
 };
-
-function throwParsingError(error: Error): never {
-  const parsingError = new ParsingError(error.message);
-  parsingError.setSourceError(error);
-
-  throw parsingError;
-}

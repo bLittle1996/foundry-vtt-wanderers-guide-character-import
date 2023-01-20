@@ -16,3 +16,10 @@ export class ParsingError extends Error {
     return this;
   }
 }
+
+export function throwParsingError(error: Error): never {
+  const parsingError = new ParsingError(error.message);
+  parsingError.setSourceError(error);
+
+  throw parsingError;
+}
