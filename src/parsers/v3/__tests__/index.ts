@@ -1,12 +1,12 @@
 import { parseGuidechar } from "..";
 import {
-  importGuidechar,
-  GuidecharFileName,
   deepObjectContaining,
+  GuidecharFileName,
+  importGuidechar,
 } from "../../../../testUtils";
 import { V3Guidechar } from "../../../schemas/v3";
 import { DeepPartial } from "../../../utils";
-import { ParsingError, UnsupportedVersionError } from "../errors";
+import { ParsingError } from "../errors";
 
 describe(parseGuidechar, () => {
   const validGuidecharCases: [GuidecharFileName, DeepPartial<V3Guidechar>][] = [
