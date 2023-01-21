@@ -1,9 +1,9 @@
 import { z } from "zod";
 
 const JSONSchema = <T extends z.ZodTypeAny>(schema: T) =>
-  // @ts-expect-error We know we might not have a string coming in, so let Zod do its thing
   z.preprocess((value) => {
     try {
+      // @ts-expect-error We know value might not work here
       return JSON.parse(value);
     } catch (error) {
       return undefined; // if an error occurs parsing, assume the field is not there

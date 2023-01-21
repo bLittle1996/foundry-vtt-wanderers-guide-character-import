@@ -1,3 +1,5 @@
+import { TranslationKey } from "./constants";
+
 export function log(level: "log" | "warn" | "error", ...things: unknown[]) {
   const prefix = "%cWanderer's Guide Importer:";
 
@@ -29,6 +31,17 @@ export function logWarning(...things: unknown[]) {
 
 export function logError(...things: unknown[]) {
   log("error", ...things);
+}
+
+export function t(
+  i18nKey: TranslationKey,
+  data?: Parameters<typeof game.i18n.format>[1]
+) {
+  if (data) {
+    return game.i18n.format(i18nKey, data);
+  }
+
+  return game.i18n.localize(i18nKey);
 }
 
 export type DeepPartial<T extends {}> = {

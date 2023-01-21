@@ -6,7 +6,9 @@ export const importGuidechar = (fileName: GuidecharFileName) => {
   return readFileSync(path.resolve("./__mocks__/" + fileName)).toString();
 };
 
-export function deepObjectContaining<T extends {}>(obj: T) {
+export function deepObjectContaining<T extends {}>(
+  obj: T
+): Record<string, any> {
   return expect.objectContaining(
     Object.fromEntries(
       Object.entries(obj).map(([key, value]) => {
