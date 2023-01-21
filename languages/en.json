@@ -1,7 +1,12 @@
 {
   "WG_CHAR_IMPORTER": {
     "DEBUG": {
-      "MODULE_READY": "Module ready"
+      "MODULE_READY": "Module ready!",
+      "CHECK_CONSOLE_FOR_ERROR": "Check your console (F12) for more detail."
+    },
+    "SETTINGS": {
+      "HEADING": "Wanderer's Guide Character Importer",
+      "IMPORT_BUTTON_TEXT": "Import Character"
     }
   }
 }

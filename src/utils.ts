@@ -33,6 +33,9 @@ export function logError(...things: unknown[]) {
   log("error", ...things);
 }
 
+/**
+ * Used for retrieving localized text.
+ */
 export function t(
   i18nKey: TranslationKey,
   data?: Parameters<typeof game.i18n.format>[1]

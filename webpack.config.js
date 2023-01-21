@@ -1,5 +1,6 @@
 const path = require("path");
 const dotenv = require("dotenv");
+const CopyPlugin = require("copy-webpack-plugin");
 
 dotenv.config();
 
@@ -26,6 +27,16 @@ const config = (env, options) => {
       filename: "module.js",
       path: path.resolve(isDev ? devDir : prodDir, "build"),
     },
+    plugins: [
+      // new CopyPlugin({
+      //   patterns: [
+      //     {
+      //       from: path.resolve(__dirname, "src", "languages"),
+      //       to: path.resolve(isDev ? devDir : prodDir, "build", "languages"),
+      //     },
+      //   ],
+      // }),
+    ],
   };
 };
 

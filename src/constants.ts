@@ -1,11 +1,5 @@
 import enJson from "../languages/en.json";
 
-type Join<
-  A extends string,
-  B extends string,
-  S extends string = "."
-> = `${A}${S}${B}`;
-
 // I have no idea how this doesn't warn about infinite recursion, but it works
 //https://stackoverflow.com/a/68404823
 type DotPrefix<T extends string> = T extends "" ? "" : `.${T}`;
