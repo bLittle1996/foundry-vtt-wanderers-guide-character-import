@@ -17,3 +17,4 @@ type DotNestedKeys<T> = (
 
 // Since english is the default language, let's use it's keys as the base.
 export type TranslationKey = DotNestedKeys<typeof enJson>;
+export const moduleId = "foundry-vtt-wanderers-guide-character-import";

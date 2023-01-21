@@ -1,3 +1,4 @@
+import { ImportDialog } from "./ui/ImportDialog";
 import { logInfo, t } from "./utils";
 
 Hooks.on("ready", () => {
@@ -5,7 +6,7 @@ Hooks.on("ready", () => {
 });
 
 Hooks.on("renderSettings", (_app, _jqueryContainer, meta) => {
-  logInfo(_jqueryContainer);
+  logInfo(_app, _jqueryContainer, meta);
   // 1. Fetch the container
   // 2. Inject a heading akin to how PF2e does it
   // This will be the last heading in the settings menu (which is likely to be the logout/return one (Game Access))
@@ -19,6 +20,12 @@ Hooks.on("renderSettings", (_app, _jqueryContainer, meta) => {
   importButton.innerHTML = `<i class="fa-solid fa-file-import"></i> <span>${t(
     "WG_CHAR_IMPORTER.SETTINGS.IMPORT_BUTTON_TEXT"
   )}</span>`;
+  importButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    const dialog = new ImportDialog();
+    dialog.render(true);
+    logInfo("Yes, it did work ;)");
+  });
   container.appendChild(importButton);
   // 3. Add a button that should open up a dialogue.
   $(heading).insertBefore(injectPoint);
