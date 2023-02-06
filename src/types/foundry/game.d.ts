@@ -6,4 +6,5 @@ import { Localization } from "./localization";
  */
 export interface Game {
   i18n: Localization;
+  user: User;
 }

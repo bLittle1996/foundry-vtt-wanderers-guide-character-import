@@ -7,6 +7,10 @@
     "SETTINGS": {
       "HEADING": "Wanderer's Guide Character Importer",
       "IMPORT_BUTTON_TEXT": "Import Character"
+    },
+    "UI": {
+      "HEADING": "Wanderer's Guide Character Importer",
+      "UPLOAD_FILE_TEXT": "Upload .guidechar file"
     }
   }
 }

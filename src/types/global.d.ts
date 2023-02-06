@@ -1,7 +1,6 @@
 import { Game } from "./foundry/game";
-import { Hooks } from "./foundry/hooks";
+import { UserPF2e } from "./pf2e/user";
 
 declare global {
-  const game: Game;
-  const Hooks: Hooks;
+  const game: Game & { user: UserPF2e };
 }

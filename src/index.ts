@@ -1,33 +1,43 @@
-import { ImportDialog } from "./ui/ImportDialog";
-import { logInfo, t } from "./utils";
+import { ImportApplication } from "./ui/ImportApplication";
+import { logError, logInfo, t } from "./utils";
 
-Hooks.on("ready", () => {
-  logInfo(t("WG_CHAR_IMPORTER.DEBUG.MODULE_READY"));
-});
+Hooks.on("renderCharacterConfig", (app, ui, data) => {
+  // const configurationWindow = app.element;
+  const canUserUpdateCharacter = data.document.canUserModify(game.user, "update");
 
-Hooks.on("renderSettings", (_app, _jqueryContainer, meta) => {
-  logInfo(_app, _jqueryContainer, meta);
-  // 1. Fetch the container
-  // 2. Inject a heading akin to how PF2e does it
-  // This will be the last heading in the settings menu (which is likely to be the logout/return one (Game Access))
-  const injectPoint = $(`#${meta.cssId} h2`).last();
+  // If we can't even update the character there is no sense in doing anything!
+  if (!canUserUpdateCharacter) {
+    logError("User cannot update this character!", {
+      user: game.user,
+      character: data.document,
+    });
+    return;
+  }
 
-  const heading = document.createElement("h2");
-  heading.innerText = t("WG_CHAR_IMPORTER.SETTINGS.HEADING");
+  logInfo({ app, ui, data });
 
-  const container = document.createElement("div");
-  const importButton = document.createElement("button");
-  importButton.innerHTML = `<i class="fa-solid fa-file-import"></i> <span>${t(
+  const button = document.createElement("button");
+  button.type = "button";
+  button.innerHTML = `<i class="fa-solid fa-file-import"></i> <span>${t(
     "WG_CHAR_IMPORTER.SETTINGS.IMPORT_BUTTON_TEXT"
   )}</span>`;
-  importButton.addEventListener("click", (event) => {
-    event.preventDefault();
-    const dialog = new ImportDialog();
-    dialog.render(true);
-    logInfo("Yes, it did work ;)");
+
+  const uiContent = ui.find(".window-content");
+
+  if (uiContent.length === 0) {
+    logError("Unable to find .window-content element in character config window.", {
+      characterConfigWindow: ui,
+    });
+    return;
+  }
+
+  const importApplication = new ImportApplication({
+    character: data.document,
   });
-  container.appendChild(importButton);
-  // 3. Add a button that should open up a dialogue.
-  $(heading).insertBefore(injectPoint);
-  $(container).insertBefore(injectPoint);
+
+  button.addEventListener("click", () => {
+    importApplication.render(true); // forcing to cause it to open.
+  });
+
+  uiContent.append(button);
 });
